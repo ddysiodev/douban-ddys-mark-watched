@@ -1,6 +1,11 @@
 # 豆瓣 DDYS 命中资源标记看过
 
-一个 Tampermonkey 用户脚本，用于在豆瓣电影选电影页读取 DDYS Chrome 插件已经检测出的资源命中缓存，并把这些豆瓣条目批量标记为当前登录豆瓣账号的“看过（私密）”。
+一个 Tampermonkey 用户脚本，用于在豆瓣电影选电影页 / 选剧集页读取 DDYS Chrome 插件已经检测出的资源命中缓存，并把这些豆瓣条目批量标记为当前登录豆瓣账号的“看过（私密）”。
+
+支持的页面：
+
+- `https://movie.douban.com/explore`（选电影）
+- `https://movie.douban.com/tv/`（选剧集）
 
 ## 做了什么
 
@@ -21,7 +26,7 @@ private=on
 1. 安装 Tampermonkey。
 2. 新建脚本，将 `douban-ddys-mark-watched.user.js` 内容粘贴进去并保存。
 3. 登录豆瓣账号。
-4. 打开 `https://movie.douban.com/explore`。
+4. 打开 `https://movie.douban.com/explore`（选电影）或 `https://movie.douban.com/tv/`（选剧集）。
 5. 等 DDYS Chrome 插件检测出“去观看”条目。
 6. 点击脚本面板里的“刷新计数”，确认待标记数量。
 7. 点击“开始POST”。

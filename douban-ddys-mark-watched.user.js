@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         豆瓣 DDYS 命中资源标记看过
 // @namespace    ddys-douban-tools
-// @version      0.4.0
-// @description  读取 DDYS 插件在豆瓣选电影页检测到的资源命中缓存，直接批量标记为豆瓣“看过（私密）”。
+// @version      0.5.0
+// @description  读取 DDYS 插件在豆瓣选电影页/选剧集页检测到的资源命中缓存，直接批量标记为豆瓣“看过（私密）”。
 // @match        https://movie.douban.com/explore*
+// @match        https://movie.douban.com/tv*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -11,7 +12,10 @@
 (function () {
   'use strict';
 
-  if (location.hostname !== 'movie.douban.com' || !location.pathname.startsWith('/explore')) {
+  const SUPPORTED_PATH_PREFIXES = ['/explore', '/tv'];
+  const isSupportedPath = SUPPORTED_PATH_PREFIXES.some(prefix => location.pathname.startsWith(prefix));
+
+  if (location.hostname !== 'movie.douban.com' || !isSupportedPath) {
     return;
   }
 
